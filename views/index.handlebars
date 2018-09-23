@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <!-- Made burgers -->
+    <div class="col-md-5">
+      <h4 class="sectionHeaders">Wishlist</h4>
+      <div>
+
+        {{#each burgers}}
+          {{#unless devoured}}
+          <form action="burger/eat/{{id}}" method="POST">
+            <div class="input-group">
+              <li class="form-control" id="burgers">{{id}}. {{burger_name}}</li>
+                <span class="input-group-btn">
+                  <button type="submit">Consume</button>
+                </span>
+            </div>
+          </form>
+          {{/unless}}
+        {{/each}}
+
+      </div>
+    </div>
+
+    
+
+    <!-- Eaten -->
+    <div class="col-md-5">
+      <h4 class="sectionHeaders">Mission Accomplished</h4>
+      <div>
+
+        <!-- Dynamically Insert Eaten Burgers Here -->
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class="input-group" >
+              <li class="form-control">{{this.id}}. {{this.burger_name}}</li>
+            </div>
+          {{/if}}
+        {{/each}}
+
+      </div>
+    </div>
+</div>
